@@ -7,15 +7,12 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#EEF4FB;color:#1B3F6E}
-
 img.capa{width:100%;height:auto;display:block}
-
 .header{background:#1B3F6E;padding:1.1rem 2rem;display:flex;align-items:center;gap:14px}
 .header-icon{width:38px;height:38px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .header-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .header h1{color:#fff;font-size:15px;font-weight:600;line-height:1.3}
 .header p{color:rgba(255,255,255,0.7);font-size:12px;margin-top:2px}
-
 .steps{display:flex;align-items:center;padding:.85rem 2rem;background:#fff;border-bottom:1px solid #D0DFF0;overflow-x:auto}
 .step{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;transition:all .3s}
@@ -29,65 +26,50 @@ img.capa{width:100%;height:auto;display:block}
 .step-line{flex:1;min-width:40px;height:1px;margin:0 6px;transition:background .3s}
 .step-line.done{background:#2E6CB8}
 .step-line.pending{background:#D0DFF0}
-
 .content{max-width:860px;margin:0 auto;padding:1.5rem 2rem 3rem}
-
 .card{background:#fff;border-radius:12px;border:1px solid #D0DFF0;margin-bottom:1.25rem;padding:1.5rem;position:relative}
 .card-title{font-size:16px;font-weight:600;color:#1B3F6E;margin-bottom:3px;display:flex;align-items:center;gap:8px}
 .card-title svg{width:18px;height:18px;stroke:#4A90D9;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 .card-sub{font-size:12px;color:#5a7da0;margin-bottom:1.25rem}
-
 .info-box{background:#EEF4FB;border:1px solid #C0D4E8;border-radius:8px;padding:.9rem 1rem;font-size:13px;color:#2E4A6B;line-height:1.65;margin-bottom:.75rem}
 .info-box strong{color:#1B3F6E}
-
 .pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:.75rem}
 .pillar{text-align:center;padding:14px 8px;background:#EEF4FB;border-radius:8px;border:1px solid #D0DFF0}
 .pillar svg{width:22px;height:22px;stroke:#2E6CB8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
 .pillar span{display:block;font-size:12px;font-weight:600;color:#1B3F6E;line-height:1.3}
-
 .field{margin-bottom:.9rem}
 .field label{display:block;font-size:12px;font-weight:600;color:#3a5e80;margin-bottom:5px}
 .field input,.field select{width:100%;padding:10px 12px;border:1px solid #C0D4E8;border-radius:8px;font-size:13px;color:#1B3F6E;background:#fff;outline:none;font-family:inherit;transition:border .2s,box-shadow .2s}
 .field input:focus,.field select:focus{border-color:#4A90D9;box-shadow:0 0 0 3px rgba(74,144,217,0.12)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-@media(max-width:600px){
-  .field-row,.field-row3{grid-template-columns:1fr}
-  .content{padding:1rem 1rem 3rem}
-  .header{padding:1rem 1rem}
-  .steps{padding:.85rem 1rem}
-}
+@media(max-width:600px){.field-row,.field-row3{grid-template-columns:1fr}.content{padding:1rem 1rem 3rem}.header{padding:1rem 1rem}.steps{padding:.85rem 1rem}}
 .optional{font-size:11px;color:#8faabf;font-weight:400;margin-left:4px}
 .divider{border:none;border-top:1px solid #E0EAF4;margin:.85rem 0}
-
 .check-opt{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:1px solid #C0D4E8;border-radius:8px;cursor:pointer;font-size:13px;color:#1B3F6E;margin-bottom:6px;transition:all .2s;user-select:none}
 .check-opt:hover,.check-opt.sel{border-color:#4A90D9;background:#EEF4FB}
 .check-opt input{accent-color:#1B3F6E;margin-top:2px;flex-shrink:0}
 .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 @media(max-width:600px){.check-grid{grid-template-columns:1fr}}
-
 .term-scroll{background:#EEF4FB;border:1px solid #C0D4E8;border-radius:8px;padding:1rem;font-size:12px;color:#2E4A6B;line-height:1.75;max-height:260px;overflow-y:auto;margin-bottom:1rem}
 .term-scroll ul{padding-left:1.1rem;margin-top:.5rem}
 .term-scroll li{margin-bottom:.5rem}
 .term-accept{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #C0D4E8;border-radius:8px;font-size:13px;color:#1B3F6E;cursor:pointer;background:#fff;transition:all .2s;user-select:none}
 .term-accept.sel{border-color:#2E6CB8;background:#EEF4FB}
 .term-accept input{accent-color:#1B3F6E;margin-top:3px;flex-shrink:0}
-
 .actions{display:flex;gap:12px;margin-top:.5rem}
 .btn-back{padding:11px 24px;border:1px solid #C0D4E8;border-radius:8px;font-size:13px;font-weight:600;color:#4a6a8a;background:#fff;cursor:pointer;font-family:inherit;transition:all .2s}
 .btn-back:hover{background:#EEF4FB}
 .btn-next{flex:1;padding:11px;border:none;border-radius:8px;font-size:13px;font-weight:600;color:#fff;background:#1B3F6E;cursor:pointer;font-family:inherit;transition:all .2s;max-width:320px}
 .btn-next:hover{background:#2E6CB8}
 .btn-next:disabled{background:#9ab8d4;cursor:not-allowed}
-
 .success{text-align:center;padding:2rem 1.5rem}
 .success-icon{width:72px;height:72px;background:#EEF4FB;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;border:1px solid #C0D4E8}
 .success-icon svg{width:36px;height:36px;stroke:#2E6CB8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .success h2{color:#1B3F6E;font-size:20px;font-weight:600;margin-bottom:10px}
 .success p{color:#5a7a9a;font-size:13px;line-height:1.6;max-width:480px;margin:0 auto}
-.resumo{text-align:left;background:#EEF4FB;border:1px solid #D0DFF0;border-radius:8px;padding:1rem;margin-top:1.25rem;font-size:12px;color:#2E4A6B;line-height:1.9;max-width:480px;margin-left:auto;margin-right:auto}
+.resumo{text-align:left;background:#EEF4FB;border:1px solid #D0DFF0;border-radius:8px;padding:1rem;margin:1.25rem auto 0;font-size:12px;color:#2E4A6B;line-height:1.9;max-width:480px}
 .sigilo-pill{display:inline-flex;align-items:center;gap:5px;background:#EEF4FB;color:#1B3F6E;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid #C0D4E8;margin-top:1rem}
-
 .loading-overlay{display:none;position:absolute;inset:0;background:rgba(255,255,255,.88);border-radius:12px;align-items:center;justify-content:center;flex-direction:column;gap:12px;font-size:13px;color:#2E6CB8;font-weight:600}
 .loading-overlay.show{display:flex}
 .spinner{width:36px;height:36px;border:3px solid #D0DFF0;border-top-color:#2E6CB8;border-radius:50%;animation:spin .7s linear infinite}
@@ -120,13 +102,9 @@ img.capa{width:100%;height:auto;display:block}
 
 <div class="content">
 
-  <!-- STEP 1 -->
   <div id="step1">
     <div class="card">
-      <div class="card-title">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        O que é o Plantão Psicológico?
-      </div>
+      <div class="card-title"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>O que é o Plantão Psicológico?</div>
       <div class="card-sub">Leia com atenção antes de prosseguir</div>
       <div class="info-box">O Plantão Psicológico é um <strong>espaço de escuta, acolhimento e orientação</strong>, conduzido por profissional da Psicologia. Ele foi pensado para apoiar colaboradores que estejam passando por momentos de estresse, ansiedade, sobrecarga emocional ou qualquer situação que esteja impactando seu bem-estar.</div>
       <div class="info-box">A participação é <strong>voluntária</strong> e o atendimento acontece de forma <strong>sigilosa</strong>. Tudo o que for conversado durante o atendimento é protegido pelo sigilo profissional da Psicologia. Este espaço existe para acolher, orientar e oferecer suporte emocional de forma ética, segura e humanizada.</div>
@@ -139,7 +117,6 @@ img.capa{width:100%;height:auto;display:block}
     <div class="actions"><button class="btn-next" onclick="ir(2)">Quero me cadastrar →</button></div>
   </div>
 
-  <!-- STEP 2 -->
   <div id="step2" style="display:none">
     <div class="card">
       <div class="card-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Seus dados</div>
@@ -194,7 +171,6 @@ img.capa{width:100%;height:auto;display:block}
     </div>
   </div>
 
-  <!-- STEP 3 -->
   <div id="step3" style="display:none">
     <div class="card">
       <div class="card-title"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Termo de ciência e participação</div>
@@ -224,7 +200,6 @@ img.capa{width:100%;height:auto;display:block}
     </div>
   </div>
 
-  <!-- STEP 4 -->
   <div id="step4" style="display:none">
     <div class="card">
       <div class="success">
@@ -244,7 +219,7 @@ img.capa{width:100%;height:auto;display:block}
 </div>
 
 <script>
-var SCRIPT_URL="https://script.google.com/macros/s/AKfycbzgXYL3CojqcTwiE90aiN8eYyDyRXTeiIEjGqmmotDs35TeNWiR8gJKLSFWk_A61SovJA/exec";
+var SCRIPT_URL="https://script.google.com/a/macros/isgh.org.br/s/AKfycbwJaLvYFShPUp3BaDMJ3E-dhBMQoKyYKlJSvlQI-yOKg5m0fqyCJ95d3gDOpzQRoxNFzQ/exec";
 var motivosSel=[];
 function ir(n){for(var i=1;i<=4;i++)document.getElementById("step"+i).style.display=i===n?"block":"none";atualizarSteps(n);if(n===4)montarResumo();window.scrollTo({top:0,behavior:"smooth"});}
 function atualizarSteps(n){for(var i=1;i<=4;i++){var sn=document.getElementById("sn"+i),sl=document.getElementById("sl"+i);if(i<n){sn.className="step-num done";sn.innerHTML="✓";sl.className="step-label done";}else if(i===n){sn.className="step-num active";sn.textContent=i;sl.className="step-label active";}else{sn.className="step-num pending";sn.textContent=i;sl.className="step-label pending";}if(i<4)document.getElementById("ln"+i).className="step-line "+(i<n?"done":"pending");}}
@@ -252,7 +227,7 @@ function checar(){var ok=v("matricula")&&v("nome")&&v("cargo")&&v("setor")&&v("t
 function v(id){return document.getElementById(id).value.trim();}
 function togMotivo(el){var cb=el.querySelector("input");setTimeout(function(){var val=cb.value;if(cb.checked){if(!motivosSel.includes(val))motivosSel.push(val);el.classList.add("sel");}else{motivosSel=motivosSel.filter(function(m){return m!==val;});el.classList.remove("sel");}document.getElementById("outro-campo").style.display=motivosSel.includes("Outro")?"block":"none";},0);}
 function togTermo(){setTimeout(function(){var chk=document.getElementById("term-chk").checked;document.getElementById("btn3").disabled=!chk;document.getElementById("term-lbl").classList.toggle("sel",chk);},0);}
-function enviar(){document.getElementById("loading").classList.add("show");document.getElementById("btn3").disabled=true;var outro=document.getElementById("outro-txt").value.trim();var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).join(", ");var payload={matricula:v("matricula"),nome:v("nome"),cargo:v("cargo"),setor:v("setor"),unidade:document.getElementById("unidade").value,telefone:v("telefone"),motivo:motivos||"Não informado",outroMotivo:outro};fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(payload)}).then(function(){ir(4);}).catch(function(){ir(4);});}
+function enviar(){document.getElementById("loading").classList.add("show");document.getElementById("btn3").disabled=true;var outro=document.getElementById("outro-txt").value.trim();var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).join(", ");var payload={matricula:v("matricula"),nome:v("nome"),cargo:v("cargo"),setor:v("setor"),unidade:document.getElementById("unidade").value,telefone:v("telefone"),motivo:motivos||"Não informado",outroMotivo:outro};fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body:JSON.stringify(payload)}).then(function(){ir(4);}).catch(function(){ir(4);});}
 function montarResumo(){var outro=document.getElementById("outro-txt").value.trim();var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).filter(Boolean).join(", ")||"Não informado";var linhas=[["Matrícula",v("matricula")],["Nome",v("nome")],["Cargo",v("cargo")],["Setor",v("setor")],["Unidade",document.getElementById("unidade").value],["Telefone",v("telefone")],["Motivo",motivos]];var html="<strong style='color:#1B3F6E;display:block;margin-bottom:6px'>Resumo do cadastro</strong>";linhas.forEach(function(l){html+="<div style='display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #D0DFF0'><span style='color:#5a7a9a'>"+l[0]+"</span><span style='color:#1B3F6E;font-weight:600;text-align:right;max-width:60%'>"+l[1]+"</span></div>";});document.getElementById("resumo").innerHTML=html;}
 </script>
 </body>
