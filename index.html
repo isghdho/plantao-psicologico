@@ -43,7 +43,7 @@ img.capa{width:100%;height:auto;display:block}
 .field input:focus,.field select:focus{border-color:#4A90D9;box-shadow:0 0 0 3px rgba(74,144,217,0.12)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-@media(max-width:600px){.field-row,.field-row3{grid-template-columns:1fr}.content{padding:1rem 1rem 3rem}.header{padding:1rem 1rem}.steps{padding:.85rem 1rem}}
+@media(max-width:600px){.field-row,.field-row3{grid-template-columns:1fr}.content{padding:1rem 1rem 3rem}.header{padding:1rem}.steps{padding:.85rem 1rem}}
 .optional{font-size:11px;color:#8faabf;font-weight:400;margin-left:4px}
 .divider{border:none;border-top:1px solid #E0EAF4;margin:.85rem 0}
 .check-opt{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:1px solid #C0D4E8;border-radius:8px;cursor:pointer;font-size:13px;color:#1B3F6E;margin-bottom:6px;transition:all .2s;user-select:none}
@@ -219,7 +219,7 @@ img.capa{width:100%;height:auto;display:block}
 </div>
 
 <script>
-var SCRIPT_URL="https://script.google.com/a/macros/isgh.org.br/s/AKfycbwJaLvYFShPUp3BaDMJ3E-dhBMQoKyYKlJSvlQI-yOKg5m0fqyCJ95d3gDOpzQRoxNFzQ/exec";
+var SCRIPT_URL="https://script.google.com/macros/s/AKfycbwJaLvYFShPUp3BaDMJ3E-dhBMQoKyYKlJSvlQI-yOKg5m0fqyCJ95d3gDOpzQRoxNFzQ/exec";
 var motivosSel=[];
 function ir(n){for(var i=1;i<=4;i++)document.getElementById("step"+i).style.display=i===n?"block":"none";atualizarSteps(n);if(n===4)montarResumo();window.scrollTo({top:0,behavior:"smooth"});}
 function atualizarSteps(n){for(var i=1;i<=4;i++){var sn=document.getElementById("sn"+i),sl=document.getElementById("sl"+i);if(i<n){sn.className="step-num done";sn.innerHTML="✓";sl.className="step-label done";}else if(i===n){sn.className="step-num active";sn.textContent=i;sl.className="step-label active";}else{sn.className="step-num pending";sn.textContent=i;sl.className="step-label pending";}if(i<4)document.getElementById("ln"+i).className="step-line "+(i<n?"done":"pending");}}
@@ -227,7 +227,29 @@ function checar(){var ok=v("matricula")&&v("nome")&&v("cargo")&&v("setor")&&v("t
 function v(id){return document.getElementById(id).value.trim();}
 function togMotivo(el){var cb=el.querySelector("input");setTimeout(function(){var val=cb.value;if(cb.checked){if(!motivosSel.includes(val))motivosSel.push(val);el.classList.add("sel");}else{motivosSel=motivosSel.filter(function(m){return m!==val;});el.classList.remove("sel");}document.getElementById("outro-campo").style.display=motivosSel.includes("Outro")?"block":"none";},0);}
 function togTermo(){setTimeout(function(){var chk=document.getElementById("term-chk").checked;document.getElementById("btn3").disabled=!chk;document.getElementById("term-lbl").classList.toggle("sel",chk);},0);}
-function enviar(){document.getElementById("loading").classList.add("show");document.getElementById("btn3").disabled=true;var outro=document.getElementById("outro-txt").value.trim();var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).join(", ");var payload={matricula:v("matricula"),nome:v("nome"),cargo:v("cargo"),setor:v("setor"),unidade:document.getElementById("unidade").value,telefone:v("telefone"),motivo:motivos||"Não informado",outroMotivo:outro};fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",body:JSON.stringify(payload)}).then(function(){ir(4);}).catch(function(){ir(4);});}
+function enviar(){
+  document.getElementById("loading").classList.add("show");
+  document.getElementById("btn3").disabled=true;
+  var outro=document.getElementById("outro-txt").value.trim();
+  var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).join(", ");
+  var payload={
+    matricula:v("matricula"),
+    nome:v("nome"),
+    cargo:v("cargo"),
+    setor:v("setor"),
+    unidade:document.getElementById("unidade").value,
+    telefone:v("telefone"),
+    motivo:motivos||"Não informado",
+    outroMotivo:outro
+  };
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    headers:{"Content-Type":"text/plain"},
+    body:JSON.stringify(payload)
+  })
+  .then(function(){ir(4);})
+  .catch(function(){ir(4);});
+}
 function montarResumo(){var outro=document.getElementById("outro-txt").value.trim();var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).filter(Boolean).join(", ")||"Não informado";var linhas=[["Matrícula",v("matricula")],["Nome",v("nome")],["Cargo",v("cargo")],["Setor",v("setor")],["Unidade",document.getElementById("unidade").value],["Telefone",v("telefone")],["Motivo",motivos]];var html="<strong style='color:#1B3F6E;display:block;margin-bottom:6px'>Resumo do cadastro</strong>";linhas.forEach(function(l){html+="<div style='display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #D0DFF0'><span style='color:#5a7a9a'>"+l[0]+"</span><span style='color:#1B3F6E;font-weight:600;text-align:right;max-width:60%'>"+l[1]+"</span></div>";});document.getElementById("resumo").innerHTML=html;}
 </script>
 </body>
