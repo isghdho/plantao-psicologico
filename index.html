@@ -138,7 +138,7 @@ img.capa{width:100%;height:auto;display:block}
           <svg style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           Você recebeu um código de convite? <span style="font-weight:400;font-size:11px;color:#854F0B">(opcional)</span>
         </div>
-        <div class="sub">Se você foi convidado pelo DHO, insira seu código abaixo. Se não possui código, deixe em branco e prossiga normalmente — o código será validado ao confirmar o cadastro.</div>
+        <div class="sub">Insira seu código abaixo. Se não possui código, deixe em branco e prossiga normalmente — o código será validado ao confirmar o cadastro.</div>
         <input type="text" id="codigoConvite" class="codigo-input" placeholder="Ex: ISGH8K3P" maxlength="8" oninput="this.value=this.value.toUpperCase()">
         <div class="codigo-hint">O código será validado automaticamente ao confirmar o cadastro.</div>
       </div>
@@ -281,8 +281,8 @@ function montarResumo(){
   var outro=document.getElementById("outro-txt").value.trim();
   var motivos=motivosSel.map(function(m){return m==="Outro"&&outro?outro:m;}).filter(Boolean).join(", ")||"Não informado";
   var codigo=document.getElementById("codigoConvite").value.trim().toUpperCase();
-  document.getElementById("tipo-badge").innerHTML='<span class="tipo-badge '+(codigo?"tipo-convidado":"tipo-voluntario")+'">'+(codigo?"⭐ Convidado prioritário":"💙 Inscrito voluntariamente")+'</span>';
-  var linhas=[["Matrícula",v("matricula")],["Nome",v("nome")],["Cargo",v("cargo")],["Setor",v("setor")],["Unidade",document.getElementById("unidade").value],["Telefone",v("telefone")],["Motivo",motivos],["Tipo",codigo?"Convidado prioritário":"Voluntário"]];
+  document.getElementById("tipo-badge").innerHTML='<span class="tipo-badge '+(codigo?"tipo-convidado":"tipo-voluntario")+'">'+(codigo?"⭐ Cadastrado":"💙 Inscrito voluntariamente")+'</span>';
+  var linhas=[["Matrícula",v("matricula")],["Nome",v("nome")],["Cargo",v("cargo")],["Setor",v("setor")],["Unidade",document.getElementById("unidade").value],["Telefone",v("telefone")],["Motivo",motivos],["Tipo",codigo?"Cadastrado":"Voluntário"]];
   if(codigo)linhas.push(["Código",codigo]);
   var html="<strong style='color:#1B3F6E;display:block;margin-bottom:6px'>Resumo do cadastro</strong>";
   linhas.forEach(function(l){html+="<div style='display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #D0DFF0'><span style='color:#5a7a9a'>"+l[0]+"</span><span style='color:#1B3F6E;font-weight:600;text-align:right;max-width:60%'>"+l[1]+"</span></div>";});
